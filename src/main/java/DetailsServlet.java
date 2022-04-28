@@ -32,11 +32,15 @@ public class DetailsServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 			String s = request.getParameter("url");
 			UserDetails.setCurrentUrl(s);
-			response.setContentType("text/html");  
-	        
-	          
-	       List<UserDetails> list=User.getDetails(s);
+			response.setContentType("text/html");  	          
+	        List<UserDetails> list=User.getDetails(s);
+	        List<CountryDetails> list1=User.getCountryData(s);
+	        List<DateDetails> list2=User.getDateData(s);
+	        List<BrowserDetails> list3=User.getBrowserData(s);
 	        request.setAttribute("list", list);
+	        request.setAttribute("list1", list1);
+	        request.setAttribute("list2", list2);
+	        request.setAttribute("list3", list3);
 		    request.getRequestDispatcher("site_analytics.jsp").forward(request, response);
 	}
 

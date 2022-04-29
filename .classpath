@@ -9,5 +9,12 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="C:/Users/Hari Prasath/Downloads/faker/automaton-1.11-8.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Hari Prasath/Downloads/faker/commons-lang3-3.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Hari Prasath/Downloads/faker/generex-1.0.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Hari Prasath/Downloads/faker/javafaker-1.0.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Hari Prasath/Downloads/faker/snakeyaml-1.23-android.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Hari Prasath/Downloads/browser/browscap-java-1.3.12.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Hari Prasath/Downloads/browser/univocity-parsers-2.8.4.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

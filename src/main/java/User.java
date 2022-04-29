@@ -1,6 +1,7 @@
 
 import java.sql.Connection;
 import com.datastax.driver.core.Cluster;
+import com.datastax.driver.core.LocalDate;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 import com.datastax.driver.core.Session;
@@ -14,12 +15,16 @@ public class User {
 	public void save(UserDetails ub) {
 		
 		Cluster cluster = Cluster.builder().addContactPoint("127.0.0.1").build();
-		 
-	      String query = "INSERT INTO analyticsbyip (url,ip,browser,country,date,time) VALUES('"+ub.getUrl()+"','"+ub.getIp()+"','"+ub.getBrowser()+"','"+ub.getCountry()+"',toDate(now()),toTimestamp(now()));";
-	      String query1 = "INSERT INTO analyticsbywebsites (url,ip,browser,country,date,time) VALUES('"+ub.getUrl()+"','"+ub.getIp()+"','"+ub.getBrowser()+"','"+ub.getCountry()+"',toDate(now()),toTimestamp(now()));";
-	      String query2 = "INSERT INTO analyticsbybrowser (url,ip,browser,country,date,time) VALUES('"+ub.getUrl()+"','"+ub.getIp()+"','"+ub.getBrowser()+"','"+ub.getCountry()+"',toDate(now()),toTimestamp(now()));";
-	      String query3 = "INSERT INTO analyticsbycountry (url,ip,browser,country,date,time) VALUES('"+ub.getUrl()+"','"+ub.getIp()+"','"+ub.getBrowser()+"','"+ub.getCountry()+"',toDate(now()),toTimestamp(now()));";
-	      String query4 = "INSERT INTO analyticsbydate (url,ip,browser,country,date,time) VALUES('"+ub.getUrl()+"','"+ub.getIp()+"','"+ub.getBrowser()+"','"+ub.getCountry()+"',toDate(now()),toTimestamp(now()));";
+		 String s[] = ub.getDate().split("-");
+		 System.out.println(s[0]);
+		 System.out.println(s[1]);
+		 System.out.println(s[2]);
+		 LocalDate ld = LocalDate.fromYearMonthDay(Integer.parseInt(s[0]),Integer.parseInt(s[1]),Integer.parseInt(s[2]));
+	      String query = "INSERT INTO analyticsbyip (url,ip,browser,country,date,time) VALUES('"+ub.getUrl()+"','"+ub.getIp()+"','"+ub.getBrowser()+"','"+ub.getCountry()+"','"+ld+"',toTimestamp(now()));";
+	      String query1 = "INSERT INTO analyticsbywebsites (url,ip,browser,country,date,time) VALUES('"+ub.getUrl()+"','"+ub.getIp()+"','"+ub.getBrowser()+"','"+ub.getCountry()+"','"+ld+"',toTimestamp(now()));";
+	      String query2 = "INSERT INTO analyticsbybrowser (url,ip,browser,country,date,time) VALUES('"+ub.getUrl()+"','"+ub.getIp()+"','"+ub.getBrowser()+"','"+ub.getCountry()+"','"+ld+"',toTimestamp(now()));";
+	      String query3 = "INSERT INTO analyticsbycountry (url,ip,browser,country,date,time) VALUES('"+ub.getUrl()+"','"+ub.getIp()+"','"+ub.getBrowser()+"','"+ub.getCountry()+"','"+ld+"',toTimestamp(now()));";
+	      String query4 = "INSERT INTO analyticsbydate (url,ip,browser,country,date,time) VALUES('"+ub.getUrl()+"','"+ub.getIp()+"','"+ub.getBrowser()+"','"+ub.getCountry()+"','"+ld+"',toTimestamp(now()));";
 	      Session session = cluster.connect("webanalytics");
 	      session.execute(query); 
 	      session.execute(query1);
